@@ -12,15 +12,24 @@ export default function TransactionTable({ items, onCreate, onUpdate, onDelete, 
 
   const changeNew = (e) => setNewItem({ ...newItem, [e.target.name]: e.target.value });
 
+  
   const add = () => {
-    if (!newItem.category || !newItem.amount) return;
-    onCreate({
-      ...newItem,
-      amount: Number(newItem.amount),
-      userId: user?.id   // ✅ เพิ่ม userId
-    });
-    setNewItem({ ...newItem, category: '', amount: '', note: '' });
-  };
+  if (!newItem.category || !newItem.amount) return;
+
+  //onsole.log('Creating transaction with userId:', user?.id); // ✅ ใส่ตรงนี้
+
+  onCreate({
+    ...newItem,
+    amount: Number(newItem.amount),
+    userId: user?.id   // ✅ ส่ง userId ไปด้วย
+  });
+
+  setNewItem({ ...newItem, category: '', amount: '', note: '' });
+};
+
+
+
+
 
   return (
     <div style={{ display: 'grid', gap: 12 }}>

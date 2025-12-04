@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Layout from './Layout';
 
 export default function TransactionRow({ item, onSave, onDelete }) {
   const [editing, setEditing] = useState(false);
